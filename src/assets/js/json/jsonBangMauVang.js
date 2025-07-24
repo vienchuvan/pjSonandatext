@@ -1,0 +1,35 @@
+export const jsonBangMauVang = [
+        { 'code': '2371-P', 'hex': '#fdf0d5' },
+        { 'code': '2372-P', 'hex': '#fde8c9' },
+        { 'code': '2373-T', 'hex': '#f9e1b6' },
+        { 'code': '2374-T', 'hex': '#f2d59e' },
+        { 'code': '2375-D', 'hex': '#e2bc85' },
+        { 'code': '2376-D', 'hex': '#daaa63' },
+
+        { 'code': '2377-A', 'hex': '#b57b38' },
+        { 'code': '2378-A', 'hex': '#a66b2d' },
+        { 'code': '2381-P', 'hex': '#fcf4e3' },
+        { 'code': '2382-P', 'hex': '#fde6b5' },
+        { 'code': '2383-P', 'hex': '#fde1a5' },
+        { 'code': '2384-T', 'hex': '#fcd990' },
+
+        { 'code': '2385-T', 'hex': '#f7ca7c' },
+        { 'code': '2386-D', 'hex': '#eaaf55' },
+        { 'code': '2387-A', 'hex': '#cb8d27' },
+        { 'code': '2388-A', 'hex': '#9c6722' },
+        { 'code': '2391-P', 'hex': '#fef8e5' },
+        { 'code': '2392-P', 'hex': '#fbf1ce' },
+
+        { 'code': '2393-T', 'hex': '#f5dc9b' },
+        { 'code': '2394-T', 'hex': '#f3cb78' },
+        { 'code': '2395-D', 'hex': '#eeb257' },
+        { 'code': '2396-D', 'hex': '#e6a13e' },
+        { 'code': '2397-A', 'hex': '#d28526' },
+        { 'code': '2398A', 'hex': '#a96b2f' },
+
+        { 'code': '2391-A', 'hex': '#fdf8e9' },
+        { 'code': '2392-P', 'hex': '#f6eecf' },
+        { 'code': '2393-T', 'hex': '#f2dca3' },
+        { 'code': '2394-T', 'hex': '#eec87a' },
+        { 'code': '2395-D', 'hex': '#e6aa52' },
+        { 'code': '2396-D', 'hex': '#dc9441' },]
