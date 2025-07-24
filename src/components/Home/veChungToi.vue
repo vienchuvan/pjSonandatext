@@ -1,7 +1,7 @@
 <template>
   <section
     class="about-section py-5 mt-5"
-    style="background: linear-gradient(to right, #eef3f8, #e0f7fa)"
+    style="background-image: url(&quot;https://png.pngtree.com/background/20220729/original/pngtree-abstract-light-grey-world-map-background-picture-image_1856648.jpg&quot;);"
     aria-labelledby="about-title"
     role="region"
   >
@@ -31,7 +31,7 @@
         >
           <article class="glass-card p-4 p-md-5" role="article">
             <h2 id="about-title" class="text-dark mb-3 fw-bold fs-2">
-              <span class="text-primary">CÔNG TY TNHH AN ĐẠT 38</span>
+              <span class="text-primary" color="#198754">CÔNG TY TNHH AN ĐẠT 38</span>
             </h2>
             <h6><strong> Giải pháp sơn nội & ngoại thất</strong> </h6>
             <!-- Hotline -->
@@ -66,7 +66,7 @@
             </p>
 
             <!-- CTA -->
-            <div>
+            <!-- <div>
               <a
                 href="#products"
                 class="btn  btn-primary px-4 py-2 rounded-pill shadow me-3 tex"
@@ -76,7 +76,7 @@
               <a href="#contact" class="btn btn-primary px-4 py-2 rounded-pill">
                 Liên hệ ngay
               </a>
-            </div>
+            </div> -->
           </article>
         </div>
       </div>

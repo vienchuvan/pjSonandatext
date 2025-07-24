@@ -13,7 +13,7 @@
 
   <a href="https://chat.zalo.me/?phone=0963888912" target="_blank">
     <button class="btn-floating whatsapp">
-      <img :src="imageUrls.iconZalo" width="20px" alt="Zalo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Icon_of_Zalo.svg/1024px-Icon_of_Zalo.svg.png" width="20px" alt="Zalo">
       <span>0963.888.912</span>
     </button>
   </a>

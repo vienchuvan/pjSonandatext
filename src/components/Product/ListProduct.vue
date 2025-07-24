@@ -19,7 +19,7 @@
           >
             <figure class="mb-0 overflow-hidden">
               <img
-                :src="product.imgSP"
+                :src="'http://103.200.23.120:3002/uploads/'+product.imgSP"
                 class="card-img-top img-fluid product-image"
                 :alt="product.tenSP"
                 loading="lazy"

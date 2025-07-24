@@ -2,14 +2,16 @@
   <header>
     <div class="header">
       <section>
-        <span class="cross parallelogram" >
-          <a href="/"> <img src="/img/logo/logoAnDatRM.png" class="logo skew-fix" alt="LOGO." /></a>
-       </span>
+        <span class="cross parallelogram">
+          <a href="/">
+            <img src="/img/logo/logoAnDatRM.png" class="logo skew-fix" alt="LOGO."
+          /></a>
+        </span>
       </section>
       <section>
         <div class="top-tab">
           <span>
-             <a href="tel:0963888912"><i class="fa fa-phone"></i>0963 888 912</a>
+            <a href="tel:0963888912"><i class="fa fa-phone"></i>0963 888 912</a>
             <a href="mailto:support@sonandatex.com.vn">
               <i class="fa fa-envelope"></i> support@sonandatex.com.vn
             </a>
@@ -21,31 +23,37 @@
             <a href="#"><i class="fa fa-youtube"></i></a>
           </span>
         </div>
+
         <div class="topnav" id="myTopnav">
-          <a href="#"><img src="https://i.ibb.co/wRTpk3V/logo.png" id="res_logo" /></a>
+          <a href="/">
+            <img
+              src="/img/logo/logoAnDatRM.png"
+              style="width: 40px"
+              id="res_logo"
+              alt="LOGO."
+          /></a>
+
           <a href="/" class="active">Trang chủ</a>
+
           <div class="dropdown">
-            <button class="dropbtn">
-              Sản phẩm
-              <i class="fa fa-caret-down"></i>
-            </button>
+            <button class="dropbtn">Sản phẩm <i class="fa fa-caret-down"></i></button>
             <div class="dropdown-content">
-              <a v-for="(item, idx) in productLinks" :key="idx" :href="item.href">
-                {{ item.name }}
+              <a
+                style="font-size: 14px"
+                v-for="(item, idx) in productLinks"
+                :key="idx"
+                :href="item.sortUrl"
+              >
+                {{ item.tenDanhMuc }}
               </a>
             </div>
           </div>
+
           <a href="/bang-mau">Bảng màu</a>
           <a href="#about">Tin tức</a>
-          <a href="#contact">Liên hệ </a>
+          <a href="/lien-he">Liên hệ</a>
 
-          <a
-            href="javascript:void(0);"
-            style="font-size: 15px"
-            class="icon"
-            onclick="myFunction()"
-            >&#9776;</a
-          >
+          <a href="javascript:void(0);" class="icon" @click="toggleMenu">&#9776;</a>
         </div>
       </section>
     </div>
@@ -54,21 +62,22 @@
 
 <script>
 import { imageUrls } from "@/assets/js/imgUrl.js";
+import { apiGetDanhMuc } from "@/assets/js/api";
+import { header } from "@/assets/js/snapService";
+import axios from "axios";
 
 export default {
-  name: "LayoutMenuSonAndatex",
+  name: "LayoutMenuSonAndatexHome",
   data() {
     return {
-      imageUrls: imageUrls,
+      imageUrls,
       isScrolled: false,
-      productLinks: [
-        { name: "Sơn nội thất", href: "#son-noi-that" },
-        { name: "Sơn ngoại thất", href: "#son-ngoai-that" },
-        { name: "Sơn chống thấm", href: "#son-chong-tham" },
-      ],
+      productLinks: [],
     };
   },
+
   mounted() {
+    this.fetchDanhMuc();
     window.addEventListener("scroll", this.handleScroll);
   },
   beforeUnmount() {
@@ -78,13 +87,30 @@ export default {
     handleScroll() {
       this.isScrolled = window.scrollY > 50;
     },
-    isActive(hash) {
-      return window.location.hash === hash;
+    toggleMenu() {
+      const topnav = document.getElementById("myTopnav");
+      topnav.classList.toggle("responsive");
+    },
+    fetchDanhMuc() {
+      let data = {
+        funcId: 10,
+      };
+      axios
+        .post(apiGetDanhMuc, data, {
+          headers: header,
+        })
+        .then((response) => {
+          console.log(response.data);
+          this.productLinks = response.data.data;
+          console.log("this.danhMuc ", this.danhMuc);
+        })
+        .catch((error) => {
+          console.error("Error fetching product:", error);
+        });
     },
   },
 };
 </script>
-
 <style scoped>
 /*HEADER*/
 header {
@@ -130,7 +156,7 @@ header {
 .skew-fix {
   display: inline-block;
   transform: skew(20deg);
-  width:  128px;
+  width: 128px;
 }
 
 /* .header .logo {
@@ -189,13 +215,13 @@ header {
 
 /*NAV*/
 .topnav {
- /* overflow: hidden; */
+  /* overflow: hidden; */
   background-color: var(--white);
   padding-left: 10rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-position: absolute;
-width: 100%;
-   /* margin-bottom: 1rem; */
+  position: absolute;
+  width: 100%;
+  /* margin-bottom: 1rem; */
 }
 
 .topnav a {
@@ -221,11 +247,10 @@ width: 100%;
   float: left;
   /* overflow: hidden; */
 }
-.dropbtn{
+.dropbtn {
   position: relative;
-
 }
-.dropdown .dropbtn { 
+.dropdown .dropbtn {
   font-size: 18px;
   border: none;
   outline: none;

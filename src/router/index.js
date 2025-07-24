@@ -6,6 +6,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import BlogGioiThieu from '@/components/Dboard/BlogGioiThieu.vue';
 import LoginVue from '@/components/Dboard/LoginVue.vue';
+import ListSanPhamTheoDanhMuc from '@/components/GioiThieu/ListSanPhamTheoDanhMuc.vue';
+import LienHe from '@/components/GioiThieu/LienHe.vue';
+import ListProduct from '@/components/GioiThieu/ListProduct.vue';
 
 const routes = [
   {
@@ -18,11 +21,11 @@ const routes = [
     name: 'ProductDetail',
     component: ProductDetail,
   },
-  // {
-  //   path: '/danh-muc/:nameDanhMuc',
-  //   name: 'nameDanhMuc',
-  //   component: ListSanPhamTheoDanhMucVue,
-  // },
+  {
+    path: '/danh-muc/:nameDanhMuc',
+    name: 'nameDanhMuc',
+    component: ListSanPhamTheoDanhMuc,
+  },
   // {
   //   path: '/gio-hang.html',
   //   name: 'cart',
@@ -38,17 +41,17 @@ const routes = [
   //   name: 'DuAnTrienKhaiVue',
   //   component: DuAnTrienKhaiVue
   // },
-  // {
-  //   path: '/san-pham',
-  //   name: 'sanpham',
-  //   component: ListProductVue
-  // },
+  {
+    path: '/san-pham',
+    name: 'sanpham',
+    component: ListProduct
+  },
 
-  // {
-  //   path: '/lien-he',
-  //   name: 'lienhe',
-  //   component: LienHeVue
-  // },
+  {
+    path: '/lien-he',
+    name: 'lienhe',
+    component: LienHe
+  },
   {
     path: '/dangnhap',
     name: 'Login',

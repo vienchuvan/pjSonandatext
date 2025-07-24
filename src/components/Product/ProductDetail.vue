@@ -189,7 +189,7 @@
 
 import axios from "axios";
 // eslint-disable-next-line no-unused-vars
-import { apiDanhMuc, apiGetDanhMuc, apiSanPham } from "@/assets/js/api";
+import { apiDanhMuc, apiGetDanhMuc, apiSanPham , apiGetSanPham} from "@/assets/js/api";
 // eslint-disable-next-line no-unused-vars
 import SlideProduct from "./SlideProduct.vue";
 import { header } from "@/assets/js/snapService";
@@ -245,13 +245,16 @@ export default {
       this.selectedItem = item; // Gán item được chọn vào biến selectedItem
     },
     fetchDanhMuc() {
+       let data= {
+        funcId:10
+      }
       axios
-        .get(apiGetDanhMuc, {
+        .post(apiGetDanhMuc, data,   {
           headers: header,
         })
         .then((response) => {
           console.log(response.data);
-          this.danhMuc = response.data.response;
+          this.danhMuc = response.data.data;
           console.log("this.danhMuc ", this.danhMuc);
         })
         .catch((error) => {
@@ -261,23 +264,24 @@ export default {
 
     async fetchProductByName(shortUrl) {
       var parts = shortUrl.split("vnk");
-      var idDanhMuc = parts[0]; // "1"
+      // var idDanhMuc = parts[0]; // "1"
       var tenSP = decodeURIComponent(parts[1]);
 
       console.log({
-        funcId: 12,
-        tenSP: tenSP,
-        idDanhMuc: idDanhMuc,
+        funcId: 15,
+        searchTerm: tenSP,
+        // idDanhMuc: idDanhMuc,
       });
 
       try {
-        const response = await axios.post(apiSanPham, {
-          funcId: 12,
-          tenSP: tenSP,
-          idDanhMuc: String(idDanhMuc).replace('-', ''),
+        const response = await axios.post(apiGetSanPham, {
+          funcId: 15,
+          searchTerm: tenSP,
+          // idDanhMuc: String(idDanhMuc).replace('-', ''),
         });
-        // console.log("this.product ", response.data);
-        this.product = response.data.result[0];
+       console.log("this.product ", response.data);
+        this.product = response.data.data[0];
+
         this.fetchProductDetal(this.product.id);
       } catch (error) {
         console.error("Error:", error);

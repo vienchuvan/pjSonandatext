@@ -19,7 +19,7 @@ export const apiGetSanPham = ip + "api/product/products-qly";
 
 
 export const apiDanhMuc = ip + "api/danhmuc/services/apiDanhMuc";
-export const apiGetDanhMuc = ip + "api/danhmuc/services/getDanhMuc";
+export const apiGetDanhMuc = ip + "api/category/categorys";
 export const apiUploadImg = ip + "api/quantri/upload";
 export const apiGetImg = ip + "api/quantri/getUploads";
 

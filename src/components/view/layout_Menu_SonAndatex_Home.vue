@@ -32,8 +32,8 @@
               Sản phẩm <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-              <a v-for="(item, idx) in productLinks" :key="idx" :href="item.href">
-                {{ item.name }}
+              <a style="font-size: 14px;" v-for="(item, idx) in productLinks" :key="idx" :href="'danh-muc/'+item.sortUrl">
+                {{ item.tenDanhMuc }}
               </a>
             </div>
           </div>
@@ -52,6 +52,9 @@
 
 <script>
 import { imageUrls } from "@/assets/js/imgUrl.js";
+import {  apiGetDanhMuc } from "@/assets/js/api";
+import { header } from "@/assets/js/snapService";
+import axios from "axios";
 
 export default {
   name: "LayoutMenuSonAndatexHome",
@@ -60,14 +63,13 @@ export default {
       imageUrls,
       isScrolled: false,
       productLinks: [
-        { name: "Sơn nội thất", href: "#product1" },
-        { name: "Sơn ngoại thất", href: "#product2" },
-        { name: "Sơn lót", href: "#product3" },
-        { name: "Sơn chống thấm", href: "#product4" },
+        
       ],
     };
   },
+
   mounted() {
+    this.fetchDanhMuc();
     window.addEventListener("scroll", this.handleScroll);
   },
   beforeUnmount() {
@@ -80,6 +82,23 @@ export default {
     toggleMenu() {
       const topnav = document.getElementById("myTopnav");
       topnav.classList.toggle("responsive");
+    },
+     fetchDanhMuc() {
+       let data= {
+        funcId:10
+      }
+      axios
+        .post(apiGetDanhMuc, data,   {
+          headers: header,
+        })
+        .then((response) => {
+          console.log(response.data);
+          this.productLinks = response.data.data;
+          console.log("this.danhMuc ", this.danhMuc);
+        })
+        .catch((error) => {
+          console.error("Error fetching product:", error);
+        });
     },
   },
 };
@@ -240,7 +259,7 @@ width: 100%;
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  min-width: 160px;
+  min-width: 200px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   border-top: 2px solid var(--primary);

@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="mt-5">
     <div class="container mt-5">
       <div class="d-flex justify-content-between">
         <h2 style="color: rgb(23, 162, 184)">{{ title }}</h2>
         <router-link
-         v-if="!isDanhMucPage"
+          v-if="!isDanhMucPage"
           :to="'/danh-muc/' + nameDanhMuc"
           class="mt-2"
           style="color: rgb(23, 162, 184)"
@@ -43,11 +43,7 @@
                 <a
                   href="#"
                   class="h4 text-primary text-decoration-none"
-                  style="
-                    color: #17a2b8 !important;
-                    font-size: 13px;
-                    font-weight: 600;
-                  "
+                  style="color: #17a2b8 !important; font-size: 13px; font-weight: 600"
                 >
                   {{ product.tenSP }}
                 </a>
@@ -71,8 +67,8 @@
     </div>
   </div>
 </template>
-  
-  <script>
+
+<script>
 export default {
   name: "ProductCategory",
   props: {
@@ -90,15 +86,14 @@ export default {
     },
   },
   computed: {
-  isDanhMucPage() {
-    return this.$route.path.includes('/danh-muc');
-  }
-}
+    isDanhMucPage() {
+      return this.$route.path.includes("/danh-muc");
+    },
+  },
 };
-
 </script>
 
-<style >
+<style>
 /* Mặc định 5 sản phẩm / hàng */
 .custom-col {
   width: 22%;
