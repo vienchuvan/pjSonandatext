@@ -1,7 +1,7 @@
 <template>
   <Layout_Menu_SonAndatex> </Layout_Menu_SonAndatex>
 
-<section class="intro-section py-5 bg-light" aria-label="Giới thiệu về VINALUX">
+<section class="intro-section py-5 bg-light" aria-label="Giới thiệu về ANDAT 38">
   <div class="container-fluid">
     <div class="row g-4">
       <!-- Cột hỗ trợ -->
@@ -18,13 +18,13 @@
             <div class="mb-3">
               <strong>Tư vấn bán hàng</strong><br />
               <i class="fa fa-phone"></i> 092.96.99999<br />
-              <i class="fa fa-envelope"></i> sonvinalux.com.vn
+              <i class="fa fa-envelope"></i> sonandatex.com.vn
             </div>
             <hr />
             <div>
               <strong>Tư vấn bán hàng</strong><br />
               <i class="fa fa-phone"></i> 0869.84.5555<br />
-              <i class="fa fa-envelope"></i> sonvinalux.com.vn
+              <i class="fa fa-envelope"></i> sonandatex.com.vn
             </div>
           </div>
         </div>
@@ -34,18 +34,18 @@
       <div class="col-lg-9 col-md-8 col-12">
         <div class="intro-content shadow-sm h-100 bg-white p-4 rounded">
           <p>
-            <strong>VINALUX</strong> – Hãng sơn hàng đầu với chất lượng và đa dạng sản phẩm sơn cao cấp.
+            <strong>ANDATEX</strong> – Hãng sơn hàng đầu với chất lượng và đa dạng sản phẩm sơn cao cấp.
           </p>
           <p>
             Là một công ty hàng đầu trong lĩnh vực sản xuất sơn, với danh tiếng mạnh mẽ và sự tin cậy cao trên thị trường.
-            Nhiều năm kinh nghiệm, VINALUX đã khẳng định được vị thế của mình bằng việc cung cấp các sản phẩm sơn chất lượng cao và đa dạng.
+            Nhiều năm kinh nghiệm, ANDATEX đã khẳng định được vị thế của mình bằng việc cung cấp các sản phẩm sơn chất lượng cao và đa dạng.
             Với sự tận tâm và chuyên nghiệp, chúng tôi đặt chất lượng là ưu tiên hàng đầu.
           </p>
           <p>
-            VINALUX cung cấp một loạt các loại sơn, bao gồm sơn nội thất, sơn ngoại thất, sơn công nghiệp và sơn chống cháy, đáp ứng được các yêu cầu sử dụng đa dạng.
+            ANDATEX cung cấp một loạt các loại sơn, bao gồm sơn nội thất, sơn ngoại thất, sơn công nghiệp và sơn chống cháy, đáp ứng được các yêu cầu sử dụng đa dạng.
           </p>
           <p>
-            Liên hệ <strong>0394.904.111 – 0986.051.666 – 0986.116.645</strong> để nhận tư vấn và ưu đãi từ VINALUX.
+            Liên hệ <strong>0394.904.111 – 0986.051.666 – 0986.116.645</strong> để nhận tư vấn và ưu đãi từ ANDATEX.
           </p>
         </div>
       </div>
@@ -168,7 +168,7 @@ html, body {
 
 /* Bắt buộc các box không vượt khung */
 * {
-  max-width: 100%;
+  /* max-width: 100%; */
   box-sizing: border-box;
 }
 /* Mặc định 5 sản phẩm / hàng */

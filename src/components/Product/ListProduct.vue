@@ -19,7 +19,7 @@
           >
             <figure class="mb-0 overflow-hidden">
               <img
-                :src="'http://103.200.23.120:3002/uploads/'+product.imgSP"
+                :src="'https://sonandatex.com.vn/uploads/' + product.imgSP"
                 class="card-img-top img-fluid product-image"
                 :alt="product.tenSP"
                 loading="lazy"
@@ -49,14 +49,16 @@
       <ProductDetail :product="selectedProduct" v-if="selectedProduct" />
 
       <div class="text-center mt-5">
-        <router-link class="btn btn-info px-4 py-2 rounded-pill text-white" to="/san-pham">
+        <router-link
+          class="btn btn-info px-4 py-2 rounded-pill text-white"
+          to="/san-pham"
+        >
           <i class="bi bi-grid-fill me-1"></i> Xem thêm sản phẩm
         </router-link>
       </div>
     </div>
   </section>
 </template>
-
 
 <script>
 import axios from "axios";
@@ -80,14 +82,14 @@ export default {
   },
   methods: {
     getProducts() {
-      let data= {
-        funcId:10
-      }
+      let data = {
+        funcId: 10,
+      };
       axios
         .post(apiGetSanPham, data, { headers: header })
         .then((res) => {
           console.log("Danh sách sản phẩm:", res.data.data);
-          
+
           this.products = res.data.data.slice(0, 8);
         })
         .catch((err) => {

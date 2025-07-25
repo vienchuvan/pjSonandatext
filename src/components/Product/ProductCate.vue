@@ -33,7 +33,7 @@
             >
               <img
                 class="card-img-top mt-2"
-                :src="product.imgSP"
+                :src="'https://sonandatex.com.vn/uploads/'+product.imgSP"
                 style="border-radius: 15px"
                 alt="..."
               />
