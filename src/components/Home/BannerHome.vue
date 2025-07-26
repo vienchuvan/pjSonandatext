@@ -1,64 +1,43 @@
 <template>
   <main>
-    <!-- Banner -->
     <section
       id="banner"
-      class="py-5 text-white mt-5"
+      ref="bannerSection"
+      class="py-5 text-white mt-5 banner-modern"
       :style="bannerStyle"
       aria-label="Giới thiệu không gian sống"
     >
       <div class="container m-auto">
-        <div class="row align-items-center mt-5">
+        <div class="row align-items-center min-vh-60">
           <!-- Tiêu đề chính -->
-          <div class="col-lg-7 col-md-12 text-center text-lg-start mb-4 mb-lg-0">
+          <div
+            class="col-lg-6 col-md-12 text-center text-lg-start mb-4 mb-lg-0 animate__animated"
+            :class="{ 'animate__fadeInLeft': showAnim }"
+          >
             <h1 class="fw-bold banner-heading" aria-label="Slogan truyền cảm hứng">
               <span class="highlight">Inspire</span>
               <span class="subtext">Không gian sống đẳng cấp & sáng tạo</span>
             </h1>
-            <p class="lead mt-3 d-none d-md-block" aria-label="Mô tả ngắn">Mang lại giải pháp sơn nội & ngoại thất chuyên nghiệp cho không gian sống của bạn.</p>
+            <p class="lead mt-3 d-none d-md-block" aria-label="Mô tả ngắn">
+              Mang lại giải pháp sơn nội & ngoại thất chuyên nghiệp cho không gian sống của bạn.
+            </p>
+            <a href="#contact" class="btn btn-warning btn-lg mt-4 shadow">Liên hệ ngay</a>
           </div>
 
           <!-- Bộ sưu tập ảnh -->
-          <div class="col-lg-5 d-none d-md-block">
-            <div class="hexagon-gallery" aria-label="Bộ sưu tập hình ảnh nội thất hiện đại">
-              <div class="hex">
-              <div class="hex-inner"  >
-                <img
-                  :src="imageUrls.noithat"
-                  loading="lazy"
-                  width="100"
-                  height="115"
-                />
-                </div>
-              </div>
-               <div class="hex">
-              <div class="hex-inner"  >
-                <img
-                  :src="imageUrls.noithat1"
-                  loading="lazy"
-                  width="100"
-                  height="115"
-                />
-                </div>
-              </div>
-               <div class="hex">
-              <div class="hex-inner"  >
-                <img
-                  :src="imageUrls.noithat2"
-                  loading="lazy"
-                  width="100"
-                  height="115"
-                />
-                </div>
-              </div>
-               <div class="hex">
-              <div class="hex-inner"  >
-                <img
-                  :src="imageUrls.noithat3"
-                  loading="lazy"
-                  width="100"
-                  height="115"
-                />
+          <div
+            class="col-lg-6 d-none d-md-flex justify-content-center align-items-center animate__animated"
+            :class="{ 'animate__fadeInRight': showAnim }"
+          >
+            <div class="hexagon-gallery-modern" aria-label="Bộ sưu tập hình ảnh nội thất hiện đại">
+              <div
+                v-for="(img, idx) in hexImages"
+                :key="idx"
+                class="hex-modern"
+                :style="{ animationDelay: `${0.2 * idx}s` }"
+              >
+                <div class="hex-inner-modern">
+                  <img :src="img.src" :alt="img.alt" loading="lazy" />
                 </div>
               </div>
             </div>
@@ -71,6 +50,7 @@
 
 <script>
 import { imageUrls } from "@/assets/js/imgUrl.js";
+import { ref, onMounted } from "vue";
 
 export default {
   name: "LandingBanner",
@@ -89,7 +69,7 @@ export default {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        height: "500px",
+        minHeight: "500px",
       };
     },
     hexImages() {
@@ -101,88 +81,144 @@ export default {
       ];
     },
   },
+  setup() {
+    const showAnim = ref(false);
+    const bannerSection = ref(null);
+
+    onMounted(() => {
+      const observer = new window.IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              showAnim.value = true;
+              observer.disconnect();
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+      if (bannerSection.value) observer.observe(bannerSection.value);
+    });
+
+    return { showAnim, bannerSection };
+  },
 };
 </script>
 
 <style scoped>
-/* Tiêu đề */
-.banner-heading {
-  text-align: left;
-  margin-top: 10px;
+@import "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css";
+
+.banner-modern {
+  position: relative;
+  overflow: hidden;
+  border-radius: 30px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  margin-bottom: 40px;
+}
+.min-vh-60 {
+  min-height: 60vh;
+  align-items: center;
 }
 .banner-heading .highlight {
-  font-size: 2.8rem;
+  font-size: 3rem;
   font-weight: bold;
   color: #d4ff00;
   font-family: "Pacifico", cursive;
   display: block;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 8px #00000044;
 }
 .banner-heading .subtext {
   font-size: 2rem;
   font-weight: 600;
-  color: #ffffff;
+  color: #fff;
   font-family: "Montserrat", sans-serif;
   display: block;
+  margin-top: 10px;
+  text-shadow: 1px 1px 6px #00000033;
+}
+.btn-warning {
+  background: linear-gradient(90deg, #ffe259 0%, #ffa751 100%);
+  border: none;
+  color: #333;
+  font-weight: bold;
+  border-radius: 30px;
+  padding: 12px 36px;
+  transition: background 0.3s;
+}
+.btn-warning:hover {
+  background: linear-gradient(90deg, #ffa751 0%, #ffe259 100%);
+  color: #111;
 }
 
-/* Bộ sưu tập lục giác */
-.hexagon-gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 100px);
-  grid-template-rows: repeat(2, 100px);
-  gap: 70px 50px;
-  justify-content: center;
-  align-items: center;
-}
-
-.hexagon-gallery .hex:nth-child(1),
-.hexagon-gallery .hex:nth-child(5) {
-  grid-row: 1;
-}
-.hexagon-gallery .hex:nth-child(2),
-.hexagon-gallery .hex:nth-child(4) {
-  grid-row: 2;
-}
-.hexagon-gallery .hex:nth-child(3) {
-  grid-row: 1 / span 2;
-  grid-column: 2;
-  align-self: center;
-}
-
-/* Style ảnh lục giác */
-.hex {
-  width: 150px;
-  height: 150px;
-  clip-path: polygon(
-    30% 0%, 70% 0%,
-    100% 30%,
-    100% 70%,
-    70% 100%, 30% 100%,
-    0% 70%, 0% 30%
-  );
-  background-color: #fff; /* chính là viền */
+/* Hex gallery hiện đại */
+.hexagon-gallery-modern {
   display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
   justify-content: center;
   align-items: center;
-  padding: 4px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  max-width: 380px;
 }
-
-.hex-inner {
-  width: 100%;
-  height: 100%;
-  clip-path: inherit; /* giữ nguyên hình bát giác bên trong */
+.hex-modern {
+  width: 110px;
+  height: 125px;
+  clip-path: polygon(
+    25% 6%, 75% 6%,
+    100% 50%,
+    75% 94%, 25% 94%,
+    0% 50%
+  );
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.13);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: fadeInUp 0.7s both;
+}
+.hex-modern:hover {
+  transform: translateY(-10px) scale(1.07);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+.hex-inner-modern {
+  width: 98%;
+  height: 98%;
+  clip-path: inherit;
   overflow: hidden;
+  border-radius: 12px;
 }
-
-.hex-inner img {
+.hex-inner-modern img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s;
 }
-.hex-inner img:hover {
-  transform: scale(1.05);
+.hex-inner-modern img:hover {
+  transform: scale(1.08);
+}
+
+/* Animation keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 991px) {
+  .banner-heading .highlight { font-size: 2.2rem; }
+  .banner-heading .subtext { font-size: 1.2rem; }
+  .hexagon-gallery-modern { max-width: 260px; }
+  .hex-modern { width: 80px; height: 90px; }
+}
+@media (max-width: 767px) {
+  .banner-modern { border-radius: 0; }
+  .min-vh-60 { min-height: 350px; }
+  .hexagon-gallery-modern { gap: 12px; }
 }
 </style>

@@ -87,7 +87,7 @@
 <script>
 import { imageUrls } from "@/assets/js/imgUrl";
 import WOW from "wowjs";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 
 export default {
   name: "AboutSectionModern",
@@ -96,10 +96,27 @@ export default {
       imageUrls,
     };
   },
-  setup() {
+   setup() {
+    const aboutSection = ref(null);
+
     onMounted(() => {
-      new WOW.WOW().init();
+      const observer = new window.IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              new WOW.WOW().init();
+              observer.disconnect(); // chỉ chạy 1 lần
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+      if (aboutSection.value) {
+        observer.observe(aboutSection.value);
+      }
     });
+
+    return { aboutSection };
   },
 };
 </script>
