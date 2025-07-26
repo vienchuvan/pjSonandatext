@@ -18,9 +18,9 @@
       </div>
       <div class="col-12 col-md-6">
         <div class="vinalux-right">
-          <h2 id="vinalux-title" class="vinalux-title">BẢNG MÀU SƠN VINALUX</h2>
+          <h2 id="vinalux-title" class="vinalux-title">BẢNG MÀU SƠN ANDATEX</h2>
           <p class="vinalux-desc">
-            VINALUX sẽ cung cấp cho bạn sự tư vấn và hướng dẫn chuyên nghiệp, giúp bạn đưa ra
+            ANDATEX sẽ cung cấp cho bạn sự tư vấn và hướng dẫn chuyên nghiệp, giúp bạn đưa ra
             những quyết định màu sắc phù hợp cho các không gian khác nhau, tạo nên một
             ngôi nhà phản ánh tính cách của bạn.
           </p>

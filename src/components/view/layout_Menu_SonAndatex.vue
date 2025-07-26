@@ -3,12 +3,10 @@
     <div class="header">
       <section>
         <span class="cross parallelogram">
-          <a href="/">
-            <img src="/img/logo/logoAnDatRM.png" class="logo skew-fix" alt="LOGO."
-          /></a>
+          <a href="/"> <img src="/img/logo/logoAnDatRM.png" class="logo skew-fix" alt="LOGO." /></a>
         </span>
       </section>
-      <section>
+      <section>  
         <div class="top-tab">
           <span>
             <a href="tel:0963888912"><i class="fa fa-phone"></i>0963 888 912</a>
@@ -25,25 +23,16 @@
         </div>
 
         <div class="topnav" id="myTopnav">
-          <a href="/">
-            <img
-              src="/img/logo/logoAnDatRM.png"
-              style="width: 40px"
-              id="res_logo"
-              alt="LOGO."
-          /></a>
+                    <a   href="/"> <img src="/img/logo/logoAnDatRM.png"  style="width: 40px;" id="res_logo" alt="LOGO." /></a>
 
           <a href="/" class="active">Trang chủ</a>
-
+          
           <div class="dropdown">
-            <button class="dropbtn">Sản phẩm <i class="fa fa-caret-down"></i></button>
+            <button class="dropbtn" @click="clickSanPham">
+              Sản phẩm <i class="fa fa-caret-down"></i>
+            </button>
             <div class="dropdown-content">
-              <a
-                style="font-size: 14px"
-                v-for="(item, idx) in productLinks"
-                :key="idx"
-                :href="item.sortUrl"
-              >
+              <a style="font-size: 14px;" v-for="(item, idx) in productLinks" :key="idx" :href="'danh-muc/'+item.sortUrl">
                 {{ item.tenDanhMuc }}
               </a>
             </div>
@@ -60,9 +49,10 @@
   </header>
 </template>
 
+
 <script>
 import { imageUrls } from "@/assets/js/imgUrl.js";
-import { apiGetDanhMuc } from "@/assets/js/api";
+import {  apiGetDanhMuc } from "@/assets/js/api";
 import { header } from "@/assets/js/snapService";
 import axios from "axios";
 
@@ -72,7 +62,9 @@ export default {
     return {
       imageUrls,
       isScrolled: false,
-      productLinks: [],
+      productLinks: [
+        
+      ],
     };
   },
 
@@ -91,12 +83,12 @@ export default {
       const topnav = document.getElementById("myTopnav");
       topnav.classList.toggle("responsive");
     },
-    fetchDanhMuc() {
-      let data = {
-        funcId: 10,
-      };
+     fetchDanhMuc() {
+       let data= {
+        funcId:10
+      }
       axios
-        .post(apiGetDanhMuc, data, {
+        .post(apiGetDanhMuc, data,   {
           headers: header,
         })
         .then((response) => {
@@ -107,6 +99,9 @@ export default {
         .catch((error) => {
           console.error("Error fetching product:", error);
         });
+    },
+    clickSanPham(){
+      this.$router.push({ path: "/san-pham" });
     },
   },
 };

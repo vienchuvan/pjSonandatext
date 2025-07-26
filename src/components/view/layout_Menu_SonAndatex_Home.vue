@@ -28,7 +28,7 @@
           <a href="/" class="active">Trang chủ</a>
           
           <div class="dropdown">
-            <button class="dropbtn">
+            <button class="dropbtn" @click="clickSanPham">
               Sản phẩm <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
@@ -40,7 +40,7 @@
 
           <a href="/bang-mau">Bảng màu</a>
           <a href="#about">Tin tức</a>
-          <a href="#contact">Liên hệ</a>
+          <a href="/lien-he">Liên hệ</a>
 
           <a href="javascript:void(0);" class="icon" @click="toggleMenu">&#9776;</a>
         </div>
@@ -99,6 +99,9 @@ export default {
         .catch((error) => {
           console.error("Error fetching product:", error);
         });
+    },
+    clickSanPham(){
+      this.$router.push({ path: "/san-pham" });
     },
   },
 };
