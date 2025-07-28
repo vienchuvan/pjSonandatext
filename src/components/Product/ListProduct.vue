@@ -1,7 +1,9 @@
 <template>
   <section class="product-section py-5 mt-4">
     <div class="container">
-      <h2 class="section-title text-center mb-4">🔥 Danh sách sản phẩm bán chạy</h2>
+      <h2 class="section-title text-center mb-4">
+        🔥 Danh sách sản phẩm bán chạy
+      </h2>
       <hr class="section-divider" />
 
       <div class="row g-4 mt-4" v-if="products && products.length">
@@ -9,6 +11,7 @@
           v-for="product in products"
           :key="product.id"
           class="product-card col-6 col-md-4 col-lg-3 d-flex"
+          data-animate="fade-up"
         >
           <router-link
             :to="{
@@ -80,7 +83,24 @@ export default {
   created() {
     this.getProducts();
   },
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+    this.handleScroll();
+  },
+  beforeUnmount() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
   methods: {
+    handleScroll() {
+      const elements = document.querySelectorAll(".animate");
+      const windowHeight = window.innerHeight;
+      elements.forEach((el) => {
+        const position = el.getBoundingClientRect().top;
+        if (position < windowHeight - 50) {
+          el.classList.add("show");
+        }
+      });
+    },
     getProducts() {
       let data = {
         funcId: 10,
@@ -124,24 +144,45 @@ export default {
   border-radius: 2px;
 }
 
-.product-card {
-  transition: transform 0.2s ease-in-out;
-}
-.product-card:hover {
-  transform: translateY(-5px);
+/* 🌟 Animation cơ bản */
+.animate {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-in-out;
 }
 
+.animate.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 🎯 Card sản phẩm có viền đẹp */
+.product-card .card {
+  border: 2px solid #e3f2fd; /* viền xanh nhạt */
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+/* 🌟 Hover card sản phẩm */
+.product-card:hover .card {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  border-color: #17a2b8; /* viền đậm hơn khi hover */
+}
+
+/* 🖼 Ảnh sản phẩm */
 .product-image {
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease;
   border-radius: 12px;
   height: 220px;
   object-fit: cover;
   width: 100%;
 }
 .product-card:hover .product-image {
-  transform: scale(1.05);
+  transform: scale(1.07);
 }
 
+/* ✍️ Tiêu đề sản phẩm */
 .product-title {
   font-size: 16px;
   font-weight: 600;
@@ -149,6 +190,7 @@ export default {
   min-height: 48px;
 }
 
+/* 🔘 Nút "Giá: Liên hệ" */
 .btn-outline-info {
   border-radius: 30px;
   font-weight: 500;

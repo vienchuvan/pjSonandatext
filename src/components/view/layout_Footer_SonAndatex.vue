@@ -18,26 +18,28 @@
           <div class="col-12 col-md-4 col-lg-4">
             <div class="footer-logo">
               <a class="footer-logo-link" href="#">
-                <img style="width: 200px" src="/img/logo/logoAnDatRM.png" alt="" />
+                <img
+                  style="width: 200px"
+                  src="/img/logo/logoAnDatRM.png"
+                  alt=""
+                />
               </a>
             </div>
             <div class="footer-menu">
               <ul id="menu-get-started" class="footer-menu-list">
-                <li class="menu-item menu-item-type-post_type menu-item-object-product">
+                <li
+                  class="menu-item menu-item-type-post_type menu-item-object-product"
+                >
                   <a href="https://maps.app.goo.gl/989cVS4jUJtjzuAj8">
-                    <i class="fa fa-map-marker" aria-hidden="true"></i> Nhà Máy SX: Thôn
-                    Đại Lộ, Xã Hồng Vân, TP Hà Nội
+                    <i class="fa fa-map-marker" aria-hidden="true"></i> Nhà Máy
+                    SX: Thôn Đại Lộ, Xã Hồng Vân, TP Hà Nội
                   </a>
                   <br />
                   <a href="https://maps.app.goo.gl/989cVS4jUJtjzuAj8">
-                    <i class="fa fa-map-marker" aria-hidden="true"></i> VPGD: Số nhà 487,
-                    tổ dân phố 8, xã Mường Ảng, Điện Biên </a
+                    <i class="fa fa-map-marker" aria-hidden="true"></i> VPGD: Số
+                    nhà 487, tổ dân phố 8, xã Mường Ảng, Điện Biên </a
                   ><br />
-                  <a   href="tel:0963.888.912">
-              
-                    ☎ Hotline: 0963 888
-                    912
-                  </a>
+                  <a href="tel:0963.888.912"> ☎ Hotline: 0963 888 912 </a>
                 </li>
               </ul>
             </div>
@@ -45,47 +47,72 @@
           <div class="col-12 col-md-4 col-lg-4" style="text-align: justify">
             <div class="footer-menu d-flex justify-content-center">
               <ul id="menu-quick-links" class="footer-menu-list">
-                <h2 class="footer-menu-name" >Thông tin bổ sung</h2>
-              <div class="w-50 m-auto p-1" style="border-bottom: 5px solid #9fa728;"> </div>
-                <li class="menu-item menu-item-type-custom menu-item-object-custom mt-3">
-                  <a target="_blank" rel="noopener noreferrer" href="#">Sơn nội thất</a>
+                <h2 class="footer-menu-name">Thông tin bổ sung</h2>
+                <div
+                  class="w-50 m-auto p-1"
+                  style="border-bottom: 5px solid #9fa728"
+                ></div>
+                <li
+                  class="menu-item menu-item-type-custom menu-item-object-custom mt-3"
+                  v-for="(item, idx) in productLinks"
+                  :key="idx"
+                
+                >
+                  <a  rel="noopener noreferrer"   :href="'danh-muc/' + item.sortUrl">
+                    {{ item.tenDanhMuc }}</a
+                  >
                 </li>
-                <li class="menu-item menu-item-type-custom menu-item-object-custom">
-                  <a target="_blank" rel="noopener noreferrer" href="#">Sơn ngoại thất</a>
+                <!-- <li
+                  class="menu-item menu-item-type-custom menu-item-object-custom"
+                >
+                  <a target="_blank" rel="noopener noreferrer" href="#"
+                    >Sơn ngoại thất</a
+                  >
                 </li>
-                <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                <li
+                  class="menu-item menu-item-type-post_type menu-item-object-page"
+                >
                   <a href="#">Sơn lót</a>
                 </li>
-                <li class="menu-item menu-item-type-post_type menu-item-object-page">
+                <li
+                  class="menu-item menu-item-type-post_type menu-item-object-page"
+                >
                   <a href="#">Sơn chống thấm</a>
                 </li>
                 <li
                   class="menu-item menu-item-type-post_type_archive menu-item-object-customer"
                 >
                   <a href="#">Sơn chống nóng</a>
-                </li>
+                </li> -->
               </ul>
             </div>
           </div>
           <div class="col-12 col-md-4 col-lg-4">
             <div class="footer-call-to-action">
-              <h2 class="footer-menu-name" >Công ty TNHH AN ĐẠT 38</h2>
-              <div class="w-50 m-auto p-1" style="border-bottom: 5px solid #9fa728;"> </div>
+              <h2 class="footer-menu-name">Công ty TNHH AN ĐẠT 38</h2>
+              <div
+                class="w-50 m-auto p-1"
+                style="border-bottom: 5px solid #9fa728"
+              ></div>
               <p class="text-justify p-1">
-                Tự hào là
-                một nhà sản xuất, phân phối cung cấp các mặt hàng sơn, thi công các công
-                trình sơn nội thất, ngoại thất uy tín, chất lượng trên toàn quốc. Chúng
-                tôi luôn tự vươn lên và khẳng định sẽ luôn mang lại phong cách phục vụ tốt
-                nhất với giá cả hợp lý nhất nhằm đáp ứng thật tốt nhu cầu của quý khách
-                hàng trong việc nâng cấp tiện nghi, trang bị và làm đẹp cho chính ngôi nhà
-                yêu quý của mình</p
-              >
+                Tự hào là một nhà sản xuất, phân phối cung cấp các mặt hàng sơn,
+                thi công các công trình sơn nội thất, ngoại thất uy tín, chất
+                lượng trên toàn quốc. Chúng tôi luôn tự vươn lên và khẳng định
+                sẽ luôn mang lại phong cách phục vụ tốt nhất với giá cả hợp lý
+                nhất nhằm đáp ứng thật tốt nhu cầu của quý khách hàng trong việc
+                nâng cấp tiện nghi, trang bị và làm đẹp cho chính ngôi nhà yêu
+                quý của mình
+              </p>
 
-               <div class="footer-logo mt-4">
-              <a class="footer-logo-link" href="#">
-                <img style="width: 150px" src="/img/logo/bo_cong_thuong.png" alt="" />
-              </a>
-            </div>
+              <div class="footer-logo mt-4">
+                <a class="footer-logo-link" href="#">
+                  <img
+                    style="width: 150px"
+                    src="/img/logo/bo_cong_thuong.png"
+                    alt=""
+                  />
+                </a>
+              </div>
               <!-- <p class="footer-call-to-action-description">Liên hệ với chúng tôi !</p> -->
               <!-- <a
                 class="footer-call-to-action-button button"
@@ -111,7 +138,8 @@
         <div class="footer-copyright-wrapper">
           <p class="footer-copyright-text">
             <a class="footer-copyright-link" href="#" target="_self">
-              Bản quyền 2025 © website : sonandatex.com.vn thuộc Công ty TNHH AN ĐẠT 38
+              Bản quyền 2025 © website : sonandatex.com.vn thuộc Công ty TNHH AN
+              ĐẠT 38
             </a>
           </p>
         </div>
@@ -121,19 +149,45 @@
 </template>
 
 <script>
-import { imageUrls } from "@/assets/js/imgUrl";
+import { imageUrls } from "@/assets/js/imgUrl.js";
+import { apiGetDanhMuc } from "@/assets/js/api";
 import WOW from "wowjs";
 import { onMounted } from "vue";
+import { header } from "@/assets/js/snapService";
+import axios from "axios";
 export default {
   data() {
     return {
       imageUrls: imageUrls,
+      productLinks: [],
     };
   },
   setup() {
     onMounted(() => {
       new WOW.WOW().init();
     });
+  },
+  mounted() {
+    this.fetchDanhMuc();
+  },
+  methods: {
+    fetchDanhMuc() {
+      let data = {
+        funcId: 10,
+      };
+      axios
+        .post(apiGetDanhMuc, data, {
+          headers: header,
+        })
+        .then((response) => {
+          console.log(response.data);
+          this.productLinks = response.data.data;
+          console.log("this.danhMuc ", this.danhMuc);
+        })
+        .catch((error) => {
+          console.error("Error fetching product:", error);
+        });
+    },
   },
 };
 </script>

@@ -217,7 +217,8 @@
 
 <script>
 import axios from "axios";
-import { apiGetImg, apiSanPham, apiUploadImg } from "@/assets/js/api"; // hoặc bạn thay bằng đường dẫn cố định
+import { apiGetImg, apiGetSanPham, apiUploadImg } from "@/assets/js/api"; // hoặc bạn thay bằng đường dẫn cố định
+import { header } from '@/assets/js/snapService';
 
 export default {
   data() {
@@ -248,13 +249,17 @@ export default {
   methods: {
     // 🟢 Lấy danh sách sản phẩm
     getProducts() {
+        let data = {
+        funcId: 10,
+      };
       axios
-        .get("https://sonvnnike.com.vn/api/sanpham/services/getSanPham")
+        .post(apiGetSanPham, data, { headers: header })
         .then((res) => {
-          this.products = res.data.response;
+          console.log("Danh sách sản phẩm:", res.data.data);
+          this.products = res.data.data;
         })
-        .catch((error) => {
-          console.error("Lỗi lấy sản phẩm:", error);
+        .catch((err) => {
+          console.error("Lỗi tải sản phẩm:", err);
         });
     },
 
@@ -285,7 +290,7 @@ export default {
       };
 
       try {
-        const response = await axios.post(apiSanPham, payload);
+        const response = await axios.post(apiGetSanPham, payload);
         alert(response.data.message || "Thao tác thành công");
 
         this.getProducts(); // Làm mới danh sách
@@ -301,7 +306,7 @@ export default {
       if (!confirm("Bạn có chắc muốn xóa sản phẩm này?")) return;
 
       try {
-        const response = await axios.post(apiSanPham, {
+        const response = await axios.post(apiGetSanPham, {
           funcId: 11,
           id,
           type: 1, // 1 là xóa sản phẩm
@@ -325,7 +330,7 @@ export default {
     // 🟢 Lấy quy cách theo id sản phẩm
     async fetchProductDetal(id) {
       try {
-        const response = await axios.post(apiSanPham, {
+        const response = await axios.post(apiGetSanPham, {
           funcId: 13,
           idSanPham: id,
         });

@@ -2,7 +2,7 @@
   <div class="noi-dung">
     <div class="form">
       <h2>Đăng Nhập</h2>
-      <form action="" @submit.prevent="getLogin">
+      <form action="" >
         <div class="input-form">
           <span>Tên Người Dùng</span>
           <input
@@ -36,7 +36,7 @@
           </div>
         </div>
         <div class="input-form">
-          <input type="submit" value="Đăng Nhập" />
+          <input @click="onClickLogin()" value="Đăng Nhập" />
         </div>
       </form>
       <h3>or</h3>
@@ -49,8 +49,9 @@
   </div>
 </template>
 <script>
-import axiosAPI from "@/components/api/axiosAPI";
-import { postLoginAc } from '../api/apiUrl';
+import { postLogin } from "@/assets/js/snapService";
+
+import { useAuthStore } from "@/assets/js/dboard/auth.js";
 
 export default {
   data() {
@@ -60,24 +61,27 @@ export default {
     };
   },
   methods: {
-    getLogin() {
-      axiosAPI
-        .post(postLoginAc, {
-          username: this.username,
-          password: this.password,
-        })
-        .then((res) => {
-          const accessToken = res.data.data.access_token;
-          localStorage.setItem("accessToken", accessToken);
-          const user = res.data.data.user.user;
-          localStorage.setItem("user", JSON.stringify(user));
-          window.location.reload();
-     
-        })
-        .catch((erro) => {
-          console.error(erro);
-          alert(erro.error)
-        });
+  async onClickLogin() {
+      try {
+        const userStore = useAuthStore();
+        console.log("userStore:", userStore);
+        const resLogin = await postLogin(this.user, this.pass);
+        this.statusCode = resLogin.status;
+        userStore.login(resLogin.user);
+        this.hideLoading();
+        if (this.statusCode == 200) {
+          this.showModalAct(1500);
+          setTimeout(() => {
+            this.$router.push("/dashboard/quantri");
+          }, 1500);
+        } else {
+          this.showModalAct(1500);
+        }
+
+        console.log(resLogin);
+      } catch (err) {
+        console.log(err);
+      }
     },
   },
 };

@@ -14,6 +14,10 @@
               <i class="fa fa-envelope"></i> support@sonandatex.com.vn
             </a>
           </span>
+          <span style="border-left: 1px solid #ccc; ">
+            <a href="/gioi-thieu"><i class="fa fa-audio-description"></i> Giới thiệu</a>
+            
+          </span>
           <span>
             <a href="#"><i class="fa fa-facebook"></i></a>
             <a href="#"><i class="fa fa-instagram"></i></a>
@@ -167,7 +171,7 @@ header {
   align-items: center;
   justify-content: Center;
   padding: 0.6rem 1rem;
-  padding-left: 10rem;
+  padding-left: 15rem;
 }
 
 .top-tab span {

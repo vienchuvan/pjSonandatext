@@ -3,21 +3,20 @@
     <div class="header">
       <section>
         <span class="cross parallelogram">
-          <a href="/">
-            <img
-              src="/img/logo/logoAnDatRM.png"
-              class="logo skew-fix"
-              alt="LOGO."
-          /></a>
+          <a href="/"> <img src="/img/logo/logoAnDatRM.png" class="logo skew-fix" alt="LOGO." /></a>
         </span>
       </section>
-      <section>
+      <section>  
         <div class="top-tab">
           <span>
             <a href="tel:0963888912"><i class="fa fa-phone"></i>0963 888 912</a>
             <a href="mailto:support@sonandatex.com.vn">
               <i class="fa fa-envelope"></i> support@sonandatex.com.vn
             </a>
+          </span>
+          <span style="border-left: 1px solid #ccc; ">
+            <a href="/gioi-thieu"><i class="fa fa-audio-description"></i> Giới thiệu</a>
+            
           </span>
           <span>
             <a href="#"><i class="fa fa-facebook"></i></a>
@@ -28,27 +27,16 @@
         </div>
 
         <div class="topnav" id="myTopnav">
-          <a href="/">
-            <img
-              src="/img/logo/logoAnDatRM.png"
-              style="width: 40px"
-              id="res_logo"
-              alt="LOGO."
-          /></a>
+                    <a   href="/"> <img src="/img/logo/logoAnDatRM.png"  style="width: 40px;" id="res_logo" alt="LOGO." /></a>
 
           <a href="/" class="active">Trang chủ</a>
-
+          
           <div class="dropdown">
             <button class="dropbtn" @click="clickSanPham">
               Sản phẩm <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-              <a
-                style="font-size: 14px"
-                v-for="(item, idx) in productLinks"
-                :key="idx"
-                :href="'danh-muc/' + item.sortUrl"
-              >
+              <a style="font-size: 14px;" v-for="(item, idx) in productLinks" :key="idx" :href="'danh-muc/'+item.sortUrl">
                 {{ item.tenDanhMuc }}
               </a>
             </div>
@@ -58,18 +46,17 @@
           <a href="#about">Tin tức</a>
           <a href="/lien-he">Liên hệ</a>
 
-          <a href="javascript:void(0);" class="icon" @click="toggleMenu"
-            >&#9776;</a
-          >
+          <a href="javascript:void(0);" class="icon" @click="toggleMenu">&#9776;</a>
         </div>
       </section>
     </div>
   </header>
 </template>
 
+
 <script>
 import { imageUrls } from "@/assets/js/imgUrl.js";
-import { apiGetDanhMuc } from "@/assets/js/api";
+import {  apiGetDanhMuc } from "@/assets/js/api";
 import { header } from "@/assets/js/snapService";
 import axios from "axios";
 
@@ -79,7 +66,9 @@ export default {
     return {
       imageUrls,
       isScrolled: false,
-      productLinks: [],
+      productLinks: [
+        
+      ],
     };
   },
 
@@ -98,12 +87,12 @@ export default {
       const topnav = document.getElementById("myTopnav");
       topnav.classList.toggle("responsive");
     },
-    fetchDanhMuc() {
-      let data = {
-        funcId: 10,
-      };
+     fetchDanhMuc() {
+       let data= {
+        funcId:10
+      }
       axios
-        .post(apiGetDanhMuc, data, {
+        .post(apiGetDanhMuc, data,   {
           headers: header,
         })
         .then((response) => {
@@ -115,7 +104,7 @@ export default {
           console.error("Error fetching product:", error);
         });
     },
-    clickSanPham() {
+    clickSanPham(){
       this.$router.push({ path: "/san-pham" });
     },
   },
@@ -181,7 +170,7 @@ header {
   align-items: center;
   justify-content: Center;
   padding: 0.6rem 1rem;
-  padding-left: 10rem;
+  padding-left: 15rem;
 }
 
 .top-tab span {
@@ -272,13 +261,13 @@ header {
 }
 
 .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  border-top: 2px solid var(--primary);
+     display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-top: 2px solid var(--primary);
 }
 
 .dropdown-content a {

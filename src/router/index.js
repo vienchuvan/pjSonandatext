@@ -9,6 +9,8 @@ import LoginVue from '@/components/Dboard/LoginVue.vue';
 import ListSanPhamTheoDanhMuc from '@/components/GioiThieu/ListSanPhamTheoDanhMuc.vue';
 import LienHe from '@/components/GioiThieu/LienHe.vue';
 import ListProduct from '@/components/GioiThieu/ListProduct.vue';
+import GioiThieu from '@/components/GioiThieu/GioiThieu.vue';
+import TinTuc from '@/components/GioiThieu/TinTuc.vue';
 
 const routes = [
   {
@@ -26,6 +28,11 @@ const routes = [
     name: 'nameDanhMuc',
     component: ListSanPhamTheoDanhMuc,
   },
+   {
+    path: '/gioi-thieu',
+    name: 'gioithieu',
+    component: GioiThieu,
+  },
   // {
   //   path: '/gio-hang.html',
   //   name: 'cart',
@@ -36,11 +43,11 @@ const routes = [
   //   name: 'ListCart',
   //   component: ListCart
   // },
-  // {
-  //   path: '/du-an-hoan-thien',
-  //   name: 'DuAnTrienKhaiVue',
-  //   component: DuAnTrienKhaiVue
-  // },
+  {
+    path: '/tin-tuc',
+    name: 'TinTuc',
+    component: TinTuc
+  },
   {
     path: '/san-pham',
     name: 'sanpham',

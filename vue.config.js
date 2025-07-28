@@ -9,5 +9,10 @@ module.exports = defineConfig({
   // Fix 404 khi reload trang hoặc vào subpath
   devServer: {
     historyApiFallback: true
+  },
+
+  // ✅ TẮT thread-loader để tránh lỗi khi build (Node 20 + vue-cli)
+  chainWebpack: (config) => {
+    config.module.rule('js').uses.delete('thread-loader')
   }
 })
