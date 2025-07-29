@@ -1,6 +1,6 @@
 <template>
 <Layout_Menu_SonAndatex></Layout_Menu_SonAndatex>
-  <div class="wrapper row3 " style="padding-top: 15px">
+  <div class="wrapper row3 mt-5" style="padding-top: 50px">
     <main class="hoc container clear bv ">
       <div style="min-height: 500px " class="padding-top15">
         <div
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { apiQuanTriBaiViet } from "@/assets/js/api";
+import { apiBaiViet } from "@/assets/js/api";
 import axios from "axios";
 import { imageUrls } from "@/assets/js/imgUrl";
 import ListProduct from "../Product/ListProduct.vue";
@@ -42,24 +42,24 @@ export default {
       //content
       contentHeThong: "",
       hasMounted: false,
-      shortUrl: "",
+      shortURL: "",
     };
   },
 
   mounted() {
     if (!this.hasMounted) {
       this.hasMounted = true;
-      this.shortUrl = this.$route.params.shortUrl;
-      console.log("this.$route.params.id; ", this.$route.params.shortUrl);
+      this.shortURL = this.$route.params.shortURL.split('andatex')[0];
+      console.log("this.$route.params.shortURL; ", this.$route.params.shortURL.split('andatex')[0]);
 
       if (this.lang) {
         // Kiểm tra giá trị của this.lang trước khi sử dụng
         this.$router.push({
-          path: "/bai-viet/" + this.shortUrl,
+          path: "/bai-viet/" + this.shortURL,
         });
       }
     }
-    this.performPostRequest(this.shortUrl);
+    this.performPostRequest(this.shortURL);
   },
 
   methods: {
@@ -67,23 +67,24 @@ export default {
       this.isMenuVisible = true;
     },
 
-    async performPostRequest(shortUrl) {
+    async performPostRequest(shortURL) {
       try {
-        const response = await axios.post(apiQuanTriBaiViet, {
-          funcId: 8,
-          shortUrl: shortUrl,
+        const response = await axios.post(apiBaiViet, {
+          funcId: 11,
+          id: shortURL,
         });
+console.log("response ", response);
 
-        this.base64 = response.data.result[0].content;
-        this.base64Title = response.data.result[0].title;
-        console.log(" this.base64Title ", response.data.result);
-        console.log(" this.base64Title ", response.data.result[0].title);
+        this.base64 = response.data.data[0].content;
+        this.base64Title = response.data.data[0].title;
+        console.log(" this.base64Title ", response.data.data);
+        console.log(" this.base64Title ", response.data.data[0].title);
 
-        this.titleHeThong = this.decodeBase64(this.base64Title);
+        this.titleHeThong = this.base64Title;
         this.$nextTick(() => {
           this.contentHeThong =
             `<div class="content-bai-viet">` +
-            this.decodeBase64(this.base64).replace(/style="[^"]*"/g, "") +
+            this.base64 +
             `</div>`;
         });
 

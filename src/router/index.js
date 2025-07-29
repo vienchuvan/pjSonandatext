@@ -70,7 +70,7 @@ const routes = [
     component: DboardQuanTri
   },
   {
-    path: '/bai-viet/:shortUrl', name: 'baiviet', component: BlogGioiThieu
+    path: '/bai-viet/:shortURL', name: 'baiviet', component: BlogGioiThieu
    },
    {
     path: '/bang-mau', name: 'BangMaMau', component: BangMau

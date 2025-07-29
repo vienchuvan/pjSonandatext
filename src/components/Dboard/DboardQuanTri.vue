@@ -59,6 +59,7 @@
 </template>
 
 <script>
+// eslint-disable-next-line no-unused-vars
 import { useAuthStore } from "@/assets/js/dboard/auth";
 import DboardBaiViet from "./DboardBaiViet.vue";
 // eslint-disable-next-line no-unused-vars
@@ -84,7 +85,9 @@ export default {
   },
   methods: {
     getUser() {
-      this.authStore = useAuthStore();
+      this.authStore = JSON.parse(localStorage.getItem('user'));
+      console.log("this.authStore ", this.authStore);
+      
       this.userName = "Xin chào " + this.authStore.user.user + " !";
     },
     selectMenu(menu) {

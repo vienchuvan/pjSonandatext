@@ -1,5 +1,5 @@
 import axios from "axios";
-import { apiGetLayBaiViet, apiLogin, apiQuanTriBaiViet } from "./api";
+import { apiGetLayBaiViet, apiLogin, apiBaiViet } from "./api";
 
 // axios.defaults.headers.common["Access-Control-Allow-Origin"] = import.meta.env.API_ORIGIN;
 // axios.defaults.headers.common["Access-Control-Allow-Methods"] = import.meta.env.API_METHODS;
@@ -30,10 +30,11 @@ export const getBaiViet = () => {
   });
 };
 
-export const postUpdateBaiViet = (funcId, user, title, shortContent, content, urlImgBaiViet, shortUrl, id) =>{
+export const postUpdateBaiViet = (funcId, user, title, shortContent, content, urlImgBaiViet, shortURL, id) =>{
+  console.log({ funcId, user, title, shortContent, content, urlImgBaiViet, shortURL, id});
   
-  return axios.post(apiQuanTriBaiViet,{
-    funcId, user, title, shortContent, content, urlImgBaiViet, shortUrl, id
+  return axios.post(apiBaiViet,{
+    funcId, user, title, shortContent, content, urlImgBaiViet, shortURL, id
   },{
     headers: header,
   }).then((res)=>{
@@ -41,9 +42,9 @@ export const postUpdateBaiViet = (funcId, user, title, shortContent, content, ur
   });
 
 }
-export const getChiTietBaiViet = (funcId , shortUrl)=>{
-  return axios.post(apiQuanTriBaiViet,{
-    funcId, shortUrl
+export const getChiTietBaiViet = (funcId , shortURL)=>{
+  return axios.post(apiBaiViet,{
+    funcId, shortURL
   },{
     headers: header,
   }).then((res)=>{
@@ -53,7 +54,7 @@ export const getChiTietBaiViet = (funcId , shortUrl)=>{
 }
 
 export const deleBaiViet = (funcId , id)=>{
-  return axios.post(apiQuanTriBaiViet,{
+  return axios.post(apiBaiViet,{
     funcId, id
   },{
     headers: header,

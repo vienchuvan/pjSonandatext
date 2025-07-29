@@ -106,10 +106,12 @@
 <script>
 import {
   deleBaiViet,
-  getBaiViet,
+  // getBaiViet,
   postUpdateBaiViet,
 } from "@/assets/js/snapService";
-
+import { header } from "@/assets/js/snapService";
+import axios from "axios";
+import { apiBaiViet } from "@/assets/js/api";
 export default {
   name: "CkEditor",
   data() {
@@ -145,8 +147,11 @@ export default {
   methods: {
     async getListBaiViet() {
       try {
-        const resBaiViet = await getBaiViet();
-        this.listBaiViet = resBaiViet.response;
+         let data = {
+          funcId: "10",
+        };
+   const resBaiViet = await axios.post(apiBaiViet, data, header);  
+         this.listBaiViet = resBaiViet.data.data;
         console.log("listBaiViet:", this.listBaiViet);
       } catch (err) {
         console.log(err);
@@ -181,7 +186,7 @@ export default {
     async suaBaiViet() {
       try {
         const resBaiViet = await postUpdateBaiViet(
-          5,
+          13,
           "0979951954",
           this.titleBaiViet,
           this.shortContent,
@@ -192,8 +197,8 @@ export default {
         );
         console.log(" resBaiViet ", resBaiViet);
         if (resBaiViet.status === 200) {
-          alert(resBaiViet.data.message);
-          window.location.reload();
+          alert("Sửa bài viết thành công !");
+          // window.location.reload();
         } else {
           alert("Có lỗi xảy ra, vui lòng thử lại sau !");
         }
@@ -205,7 +210,7 @@ export default {
     async themBaiVietMoi() {
       try {
         const resBaiViet = await postUpdateBaiViet(
-          6,
+          12,
           "0979951954",
           this.titleBaiViet,
           this.shortContent,
@@ -228,7 +233,7 @@ export default {
 
     async xoaBaiViet(id) {
       try {
-        const resBaiViet = await deleBaiViet(7, id);
+        const resBaiViet = await deleBaiViet(14, id);
         console.log(" resBaiViet ", resBaiViet);
         if (resBaiViet.status === 200) {
           alert("Xóa thành công bài viết !");

@@ -43,7 +43,7 @@
           </div>
 
           <a href="/bang-mau">Bảng màu</a>
-          <a href="#about">Tin tức</a>
+          <a href="/tin-tuc">Tin tức</a>
           <a href="/lien-he">Liên hệ</a>
 
           <a href="javascript:void(0);" class="icon" @click="toggleMenu">&#9776;</a>

@@ -1,7 +1,7 @@
 <template>
   <Layout_Menu_SonAndatex> </Layout_Menu_SonAndatex>
 
-<section class="intro-section py-5 bg-light" aria-label="Giới thiệu về ANDAT 38">
+<section class="intro-section py-5 bg-light mt-5" aria-label="Giới thiệu về ANDAT 38" style="padding-top:50px !important"> 
   <div class="container-fluid">
     <div class="row g-4">
       <!-- Cột hỗ trợ -->
@@ -11,28 +11,24 @@
           <div class="support-hotline mb-3">
             <span>
               <i class="fa fa-phone text-danger"></i>
-              <strong class="text-danger">HOTLINE: 092.63.88888</strong>
+              <strong class="text-danger">HOTLINE: 0963 888 912</strong>
             </span>
           </div>
           <div class="support-contact">
             <div class="mb-3">
               <strong>Tư vấn bán hàng</strong><br />
-              <i class="fa fa-phone"></i> 092.96.99999<br />
+              <i class="fa fa-phone"></i> 0963 888 912<br />
               <i class="fa fa-envelope"></i> sonandatex.com.vn
             </div>
             <hr />
-            <div>
-              <strong>Tư vấn bán hàng</strong><br />
-              <i class="fa fa-phone"></i> 0869.84.5555<br />
-              <i class="fa fa-envelope"></i> sonandatex.com.vn
-            </div>
+            
           </div>
         </div>
       </div>
 
       <!-- Cột giới thiệu -->
       <div class="col-lg-9 col-md-8 col-12">
-        <div class="intro-content shadow-sm h-100 bg-white p-4 rounded">
+        <div class="intro-content shadow-sm h-100 bg-white p-4 rounded text-justify">
           <p>
             <strong>ANDATEX</strong> – Hãng sơn hàng đầu với chất lượng và đa dạng sản phẩm sơn cao cấp.
           </p>
@@ -45,7 +41,7 @@
             ANDATEX cung cấp một loạt các loại sơn, bao gồm sơn nội thất, sơn ngoại thất, sơn công nghiệp và sơn chống cháy, đáp ứng được các yêu cầu sử dụng đa dạng.
           </p>
           <p>
-            Liên hệ <strong>0394.904.111 – 0986.051.666 – 0986.116.645</strong> để nhận tư vấn và ưu đãi từ ANDATEX.
+            Liên hệ <strong>0963 888 912</strong> để nhận tư vấn và ưu đãi từ ANDATEX.
           </p>
         </div>
       </div>

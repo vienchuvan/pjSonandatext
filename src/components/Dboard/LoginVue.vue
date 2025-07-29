@@ -121,22 +121,24 @@ export default {
     },
     async onClickLogin() {
       try {
-        const userStore = useAuthStore();
-        console.log("userStore:", userStore);
+ 
         const resLogin = await postLogin(this.user, this.pass);
         this.statusCode = resLogin.status;
-        userStore.login(resLogin.user);
+        // userStore.login(resLogin.user);
+                  console.log("resLogin.user ", resLogin.user);
+
         this.hideLoading();
         if (this.statusCode == 200) {
           this.showModalAct(1500);
           setTimeout(() => {
-            this.$router.push("/dashboard/quantri");
+            
+            localStorage.setItem("user", JSON.stringify(resLogin.user));
+           this.$router.push("/dashboard/quantri");
           }, 1500);
         } else {
           this.showModalAct(1500);
         }
 
-        console.log(resLogin);
       } catch (err) {
         console.log(err);
       }

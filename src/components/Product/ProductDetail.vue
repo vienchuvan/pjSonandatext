@@ -262,8 +262,8 @@ export default {
         });
     },
 
-    async fetchProductByName(shortUrl) {
-      var parts = shortUrl.split("vnk");
+    async fetchProductByName(shortURL) {
+      var parts = shortURL.split("vnk");
       // var idDanhMuc = parts[0]; // "1"
       var tenSP = decodeURIComponent(parts[1]);
 
@@ -289,18 +289,14 @@ export default {
     },
 
     async fetchProductDetal(id) {
-      console.log("aaaaaa", {
-        funcId: 13,
-        idSanPham: id,
-      });
+    
 
       try {
-        const response = await axios.post(apiSanPham, {
-          funcId: 13,
-          idSanPham: id,
+        const response = await axios.post(apiGetSanPham, {
+          funcId: 17,
+          id: id,
         });
-        console.log("this.product ", response.data);
-        this.productDetail = response.data.result;
+        this.productDetail = response.data.data[0].quycach;
         if (this.productDetail.length > 0) {
           this.selectedItem = this.productDetail[0];
         }

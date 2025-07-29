@@ -15,7 +15,7 @@
             @click="editProduct(itemSanPham)"
           >
             <img
-              :src="itemSanPham.imgSP"
+              :src="'https://sonandatex.com.vn/uploads/' + itemSanPham.imgSP"
               alt="Ảnh sản phẩm"
               style="width: 50px; height: 50px"
             />
@@ -25,7 +25,11 @@
               @click.stop="deleteProduct(itemSanPham.id)"
               style="cursor: pointer"
             >
-              <i class="fa fa-times-circle" style="color: red" aria-hidden="true"></i>
+              <i
+                class="fa fa-times-circle"
+                style="color: red"
+                aria-hidden="true"
+              ></i>
             </span>
           </li>
         </ul>
@@ -37,9 +41,17 @@
           <h3>Chi tiết</h3>
         </div>
 
-        <div class="form-group input-group d-flex" style="flex-direction: column">
+        <div
+          class="form-group input-group d-flex"
+          style="flex-direction: column"
+        >
           <span class="has-float-label d-none">
-            <input class="form-control" type="text" v-model="form.id" placeholder=" " />
+            <input
+              class="form-control"
+              type="text"
+              v-model="form.id"
+              placeholder=" "
+            />
           </span>
           <div class="container">
             <div class="row">
@@ -53,7 +65,9 @@
                   placeholder=" "
                 />
                 <label>Tên sản phẩm</label>
-                <small v-if="errors.tenSP" class="text-danger">{{ errors.tenSP }}</small>
+                <small v-if="errors.tenSP" class="text-danger">{{
+                  errors.tenSP
+                }}</small>
               </span>
               <!-- URL ảnh hiển thị -->
               <span class="has-float-label col-12 col-md-6 p-1">
@@ -65,13 +79,20 @@
                   placeholder=" "
                 />
                 <label>Mã sản phẩm</label>
-                <small v-if="errors.maSP" class="text-danger">{{ errors.maSP }}</small>
+                <small v-if="errors.maSP" class="text-danger">{{
+                  errors.maSP
+                }}</small>
               </span>
             </div>
           </div>
           <!-- URL ảnh hiển thị -->
           <span class="has-float-label mt-3 p-1">
-            <input class="form-control" type="text" v-model="form.mota" placeholder=" " />
+            <input
+              class="form-control"
+              type="text"
+              v-model="form.mota"
+              placeholder=" "
+            />
             <label>Chi tiết</label>
           </span>
           <!-- URL ảnh hiển thị -->
@@ -80,11 +101,13 @@
               class="form-control"
               type="text"
               v-model="form.imgSP"
-                  :class="{ 'is-invalid': errors.imgSP }"
+              :class="{ 'is-invalid': errors.imgSP }"
               placeholder=" "
             />
             <label>URL Ảnh hiển thị</label>
-            <small v-if="errors.imgSP" class="text-danger">{{ errors.imgSP }}</small>
+            <small v-if="errors.imgSP" class="text-danger">{{
+              errors.imgSP
+            }}</small>
           </span>
 
           <!-- Danh mục sản phẩm -->
@@ -109,7 +132,11 @@
           </span>
         </div>
         <div class="container">
-          <div class="row mt-4" v-for="(item, index) in quyCach" :key="item.id || index">
+          <div
+            class="row mt-4"
+            v-for="(item, index) in quyCach"
+            :key="item.id || index"
+          >
             <!-- Quy cách -->
             <span class="has-float-label col-12 col-md-4 p-1">
               <input
@@ -156,7 +183,11 @@
                 "
                 @click="removeQuyCach(index)"
               >
-                <i class="fa fa-times-circle" style="color: red" aria-hidden="true"></i>
+                <i
+                  class="fa fa-times-circle"
+                  style="color: red"
+                  aria-hidden="true"
+                ></i>
               </button>
             </span>
           </div>
@@ -169,7 +200,11 @@
 
         <!-- Nút hành động -->
         <div class="d-flex">
-          <button class="w-25 btn btn-primary" @click="saveProduct" style="height: 50px">
+          <button
+            class="w-25 btn btn-primary"
+            @click="saveProduct"
+            style="height: 50px"
+          >
             {{ form.id ? "Cập nhật sản phẩm" : "Thêm sản phẩm" }}
           </button>
           <button
@@ -218,7 +253,7 @@
 <script>
 import axios from "axios";
 import { apiGetImg, apiGetSanPham, apiUploadImg } from "@/assets/js/api"; // hoặc bạn thay bằng đường dẫn cố định
-import { header } from '@/assets/js/snapService';
+import { header } from "@/assets/js/snapService";
 
 export default {
   data() {
@@ -233,7 +268,7 @@ export default {
         mota: "",
       },
       quyCach: [],
-      errors: {}, 
+      errors: {},
       urlImage: "",
       selectedFile: null,
       previewImage: null,
@@ -249,7 +284,7 @@ export default {
   methods: {
     // 🟢 Lấy danh sách sản phẩm
     getProducts() {
-        let data = {
+      let data = {
         funcId: 10,
       };
       axios
@@ -269,9 +304,11 @@ export default {
       this.errors = {};
 
       // Kiểm tra các trường bắt buộc
-      if (!this.form.tenSP) this.errors.tenSP = "Tên sản phẩm không được để trống";
+      if (!this.form.tenSP)
+        this.errors.tenSP = "Tên sản phẩm không được để trống";
       if (!this.form.maSP) this.errors.maSP = "Mã sản phẩm không được để trống";
-      if (!this.form.idDanhMuc) this.errors.idDanhMuc = "Danh mục không được để trống";
+      if (!this.form.idDanhMuc)
+        this.errors.idDanhMuc = "Danh mục không được để trống";
       if (!this.form.imgSP) this.errors.imgSP = "Link ảnh không được để trống";
 
       // Nếu có lỗi, dừng lại
@@ -281,7 +318,7 @@ export default {
       }
 
       const isUpdate = !!this.form.id;
-      const funcId = isUpdate ? 9 : 10;
+      const funcId = isUpdate ? 12 : 13;
 
       const payload = {
         funcId,
@@ -307,7 +344,7 @@ export default {
 
       try {
         const response = await axios.post(apiGetSanPham, {
-          funcId: 11,
+          funcId: 14,
           id,
           type: 1, // 1 là xóa sản phẩm
         });
@@ -331,15 +368,15 @@ export default {
     async fetchProductDetal(id) {
       try {
         const response = await axios.post(apiGetSanPham, {
-          funcId: 13,
-          idSanPham: id,
+          funcId: 17,
+          id: id,
         });
-        this.quyCach = response.data.result || [];
+
+        this.quyCach = response.data.data[0].quycach || [];
       } catch (error) {
-        console.error("Lỗi lấy quy cách:", error);
+        console.error("Error:", error);
       }
     },
-
     // 🟢 Thêm dòng quy cách
     addQuyCach() {
       this.quyCach.push({
