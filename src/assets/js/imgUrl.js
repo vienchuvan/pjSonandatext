@@ -12,6 +12,8 @@ export const imageUrls = {
  noithatgreen : "img/noithat/nothatgreen.jpg",
  noithatdo : "img/noithat/noithatdo.jpg",
  noithatvang : "img/noithat/noithatvang.jpg",
+  noithatxam : "img/noithat/noithatxam.png",
+ noithatnau : "img/noithat/noithatnau.jfif",
 
  bannerBG : "img/banner/banner.PNG",
   bannerEco : "img/banner/bannereco.jpg",

@@ -318,7 +318,7 @@ export default {
       }
 
       const isUpdate = !!this.form.id;
-      const funcId = isUpdate ? 12 : 13;
+      const funcId = isUpdate ? 13 : 12;
 
       const payload = {
         funcId,

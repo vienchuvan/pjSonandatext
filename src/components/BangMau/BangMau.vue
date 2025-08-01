@@ -69,6 +69,22 @@ export default {
           bgColor: "#e74c3c",
           colors: Array(30).fill("#e74c3c"),
         },
+        {
+          title: "XÁM HIỆN ĐẠI ",
+          description:
+            "Biểu tượng cho sự an toàn chắc chắn. Gia chủ mệnh Kim có thể sử dụng riêng màu này kết hợp với màu nâu vàng theo nghĩa Thổ sinh Kim",
+          image: imageUrls.noithatxam,
+          bgColor: "#b1babc",
+          colors: Array(30).fill("#e2e5e0"),
+        },
+        {
+          title: "XÁM NÂU CỔ ĐIỂN",
+          description:
+            "Gam màu cổ điển, lưu trữ giá trí bền lâu, mạnh mẽ. Phù hợp mới mệnh Thổ",
+          image: imageUrls.noithatnau,
+          bgColor: "#ca8b7b",
+          colors: Array(30).fill("#f9e6d8"),
+        },
       ],
     };
   },
@@ -85,16 +101,21 @@ export default {
   display: grid;
   grid-template-columns: 1fr;
   gap: 40px;
-  max-width: 1350px;
+  max-width: auto;
   margin: 0 auto;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .palette-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* tablet: 2 cột */
   }
 }
 
+@media (min-width: 1200px) {
+  .palette-grid {
+    grid-template-columns: 1fr 1fr 1fr; /* desktop: 3 cột */
+  }
+}
 .note {
   text-align: center;
   color: #666;

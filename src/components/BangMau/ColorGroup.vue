@@ -26,6 +26,8 @@ import { jsonBangMauVang } from "@/assets/js/json/jsonBangMauVang";
 import { jsonBangMauDo } from "@/assets/js/json/jsonBangMauDo";
 import { jsonBangMauGreen } from "@/assets/js/json/jsonBangMauGreen";
 import { jsonBangMauXanhDaTroi } from "@/assets/js/json/jsonBangMauXanhDaTroi";
+import { jsonBangMauNau } from "@/assets/js/json/jsonBangMauNau";
+import { jsonBangMauXam } from "@/assets/js/json/jsonBangMauXam";
 
 export default {
   name: "ColorGroup",
@@ -41,7 +43,9 @@ export default {
       yellowColors: jsonBangMauVang,
       redColor: jsonBangMauDo,
       greenColor:jsonBangMauGreen,
-      xanhDaTroi:jsonBangMauXanhDaTroi
+      xanhDaTroi:jsonBangMauXanhDaTroi,
+      mauXam:jsonBangMauXam,
+      mauNau:jsonBangMauNau
     };
   },
   computed: {
@@ -54,6 +58,10 @@ export default {
         return this.greenColor;
       }else if (this.colors && this.colors.includes("#00bcd4")) {
         return this.xanhDaTroi;
+      }else if (this.colors && this.colors.includes("#f9e6d8")) {
+        return this.mauNau;
+      }else if (this.colors && this.colors.includes("#e2e5e0")) {
+        return this.mauXam;
       }
       if (Array.isArray(this.colors)) {
         return this.colors.map((hex) => ({ code: hex, hex }));
