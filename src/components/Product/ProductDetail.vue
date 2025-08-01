@@ -1,6 +1,6 @@
 <template>
   <menuShop></menuShop>
-  <div class="container " style="margin-top: 5%;">
+  <div class="container mt-intro" >
     <div class="row">
       <div class="col-lg-2 p-0 h-auto mb-30 danh-muc">
         <table class="rwd-table p-1">
@@ -309,6 +309,9 @@ export default {
 </script>
 
 <style scoped>
+.mt-intro{
+  margin-top: 5%;
+}
   .commitment-box {
             border: 2px solid #003087;
             border-radius: 10px;
@@ -409,11 +412,17 @@ export default {
   .rwd-table tr:nth-child(2) {
     border-top: none;
   }
+  .mt-intro{
+  margin-top: 20%;
+}
 }
 @media (max-width: 576px) {
   .danh-muc {
     display: none;
   }
+  .mt-intro{
+  margin-top: 20%;
+}
 }
 @media screen and (min-width: 600px) {
   .rwd-table tr:hover:not(:first-child) {
@@ -439,5 +448,6 @@ export default {
   .rwd-table td {
     padding: 1em !important;
   }
+
 }
 </style>

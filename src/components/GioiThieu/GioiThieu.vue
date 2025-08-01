@@ -3,8 +3,8 @@
 
   <!-- Giới thiệu Sơn ANDATEX -->
   <section
-    class="bg-white text-center py-5 px-3 animate "
-    style="margin-top: 5%"
+    class="bg-white text-center py-5 px-3 animate mt-intro "
+   
     aria-label="Giới thiệu sơn ANDATEX"
     data-animate="fade-up"
   >
@@ -230,6 +230,9 @@ export default {
 </script>
 
 <style scoped>
+.mt-intro{
+  margin-top: 5%;
+}
 .intro-block img {
   max-width: 750px;
   width: 100%;
@@ -265,6 +268,9 @@ export default {
   .contact-box {
     width: 100%;
   }
+  .mt-intro{
+  margin-top: 10%;
+}
 }
 .contact-box p {
   margin-bottom: 8px;
@@ -312,6 +318,9 @@ export default {
 
 /* Responsive */
 @media (max-width: 576px) {
+  .mt-intro{
+  margin-top: 20%;
+}
   h1.fs-2 {
     font-size: 1.5rem !important;
   }
